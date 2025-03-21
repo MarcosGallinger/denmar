@@ -1,3 +1,8 @@
+// scripts.js - Archivo principal de JavaScript
+
+// Importar funciones de IA
+import { analizarGastos, mostrarRecomendaciones } from './ia.js';
+
 // Datos iniciales
 let ingresos = 0;
 let gastos = [];
@@ -18,9 +23,9 @@ function cargarDatos() {
         // Mostrar gastos en la lista
         const listaGastos = document.getElementById('lista-gastos').querySelector('ul');
         listaGastos.innerHTML = ''; // Limpiar lista
-        gastos.forEach(gasto => {
+        gastos.forEach((gasto, index) => {
             const nuevoGasto = document.createElement('li');
-            nuevoGasto.textContent = `${gasto.categoria}: $${gasto.monto}`;
+            nuevoGasto.innerHTML = `${gasto.categoria}: $${gasto.monto} <button data-index="${index}">Eliminar</button>`;
             listaGastos.appendChild(nuevoGasto);
         });
 
@@ -35,6 +40,10 @@ function cargarDatos() {
 
         // Actualizar gráfico de gastos
         actualizarGrafico();
+
+        // Mostrar recomendaciones de IA
+        const recomendaciones = analizarGastos(gastos, ingresos);
+        mostrarRecomendaciones(recomendaciones);
     }
 }
 
@@ -50,10 +59,22 @@ function guardarDatos() {
     localStorage.setItem('finanzasData', JSON.stringify(datos));
 }
 
+// Función para eliminar un gasto
+function eliminarGasto(index) {
+    gastos.splice(index, 1); // Eliminar el gasto del array
+    guardarDatos(); // Guardar los datos actualizados
+    cargarDatos(); // Recargar la lista de gastos
+}
+
 // Registrar ingresos y gastos
 document.getElementById('gastos-form').addEventListener('submit', function (e) {
     e.preventDefault();
-    ingresos = parseFloat(document.getElementById('ingresos').value);
+
+    // Solo cargar ingresos si no se han cargado previamente
+    if (ingresos === 0) {
+        ingresos = parseFloat(document.getElementById('ingresos').value);
+    }
+
     const categoria = document.getElementById('categoria').value;
     const monto = parseFloat(document.getElementById('monto').value);
 
@@ -61,15 +82,30 @@ document.getElementById('gastos-form').addEventListener('submit', function (e) {
 
     const listaGastos = document.getElementById('lista-gastos').querySelector('ul');
     const nuevoGasto = document.createElement('li');
-    nuevoGasto.textContent = `${categoria}: $${monto}`;
+    nuevoGasto.innerHTML = `${categoria}: $${monto} <button data-index="${gastos.length - 1}">Eliminar</button>`;
     listaGastos.appendChild(nuevoGasto);
 
     // Calcular presupuesto sugerido
     calcularPresupuesto();
-    document.getElementById('gastos-form').reset();
+
+    // Limpiar solo los campos de categoría y monto
+    document.getElementById('categoria').value = 'servicios'; // Resetear a la primera opción
+    document.getElementById('monto').value = '';
 
     // Guardar datos
     guardarDatos();
+
+    // Mostrar recomendaciones de IA
+    const recomendaciones = analizarGastos(gastos, ingresos);
+    mostrarRecomendaciones(recomendaciones);
+});
+
+// Event delegation para eliminar gastos
+document.getElementById('lista-gastos').addEventListener('click', function (e) {
+    if (e.target.tagName === 'BUTTON') {
+        const index = e.target.getAttribute('data-index');
+        eliminarGasto(index);
+    }
 });
 
 // Calcular presupuesto sugerido
