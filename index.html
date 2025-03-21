@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finanzas Futuristas</title>
+    <link rel="stylesheet" href="styles/general.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Finanzas Futuristas</h1>
+            <p>Controla tus gastos, ahorra y planifica tu futuro.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Sección de Control de Gastos -->
+        <section id="control-gastos">
+            <h2>Control de Gastos</h2>
+            <form id="gastos-form">
+                <label for="ingresos">Ingresos Mensuales:</label>
+                <input type="number" id="ingresos" name="ingresos" required>
+
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="categoria">
+                    <option value="vivienda">Vivienda</option>
+                    <option value="transporte">Transporte</option>
+                    <option value="alimentacion">Alimentación</option>
+                    <option value="ocio">Ocio</option>
+                    <option value="otros">Otros</option>
+                </select>
+
+                <label for="monto">Monto:</label>
+                <input type="number" id="monto" name="monto" required>
+
+                <button type="submit">Agregar Gasto</button>
+            </form>
+            <div id="lista-gastos">
+                <h3>Gastos Registrados</h3>
+                <ul></ul>
+            </div>
+        </section>
+
+        <!-- Sección de Presupuesto Mensual -->
+        <section id="presupuesto-mensual">
+            <h2>Presupuesto Mensual</h2>
+            <div id="sugerencia-presupuesto">
+                <h3>Sugerencia de Presupuesto</h3>
+                <p id="presupuesto-sugerido"></p>
+            </div>
+            <form id="ajuste-presupuesto-form">
+                <label for="limite-categoria">Categoría:</label>
+                <select id="limite-categoria" name="limite-categoria">
+                    <option value="vivienda">Vivienda</option>
+                    <option value="transporte">Transporte</option>
+                    <option value="alimentacion">Alimentación</option>
+                    <option value="ocio">Ocio</option>
+                    <option value="otros">Otros</option>
+                </select>
+
+                <label for="limite-gasto">Límite de Gasto:</label>
+                <input type="number" id="limite-gasto" name="limite-gasto" required>
+
+                <button type="submit">Ajustar Límite</button>
+            </form>
+            <div id="alertas-presupuesto">
+                <h3>Alertas de Presupuesto</h3>
+                <p id="mensaje-alerta"></p>
+            </div>
+        </section>
+
+        <!-- Sección de Metas de Ahorro -->
+        <section id="metas-ahorro">
+            <h2>Metas de Ahorro</h2>
+            <form id="meta-ahorro-form">
+                <label for="nombre-meta">Nombre de la Meta:</label>
+                <input type="text" id="nombre-meta" name="nombre-meta" required>
+
+                <label for="monto-meta">Monto a Ahorrar:</label>
+                <input type="number" id="monto-meta" name="monto-meta" required>
+
+                <label for="plazo-meta">Plazo (meses):</label>
+                <input type="number" id="plazo-meta" name="plazo-meta" required>
+
+                <button type="submit">Establecer Meta</button>
+            </form>
+            <div id="progreso-ahorro">
+                <h3>Progreso de Ahorro</h3>
+                <progress value="0" max="100"></progress>
+                <p>Ahorrado: <span id="ahorrado">0</span>%</p>
+            </div>
+        </section>
+
+        <!-- Sección de Consejos y Metodologías de Ahorro -->
+        <section id="consejos-ahorro">
+            <h2>Consejos y Metodologías de Ahorro</h2>
+            <div id="consejos-container">
+                <h3>Consejo del Día</h3>
+                <p id="consejo"></p>
+                <h3>Metodologías Populares</h3>
+                <ul id="metodologias">
+                    <li><strong>Regla 50/30/20:</strong> 50% necesidades, 30% deseos, 20% ahorros.</li>
+                    <li><strong>Reto de Ahorro:</strong> Ahorra pequeñas cantidades diarias o semanales.</li>
+                    <li><strong>Envelope System:</strong> Asigna dinero en efectivo a categorías específicas.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sección de Análisis y Reportes -->
+        <section id="analisis-reportes">
+            <h2>Análisis y Reportes</h2>
+            <div id="graficos-container">
+                <h3>Gráficos de Gastos</h3>
+                <canvas id="grafico-gastos"></canvas>
+            </div>
+        </section>
+
+        <!-- Sección de Planificación a Largo Plazo -->
+        <section id="planificacion-largo-plazo">
+            <h2>Planificación a Largo Plazo</h2>
+            <form id="planificacion-form">
+                <label for="meta-futura">Meta Futura:</label>
+                <input type="text" id="meta-futura" name="meta-futura" placeholder="Ej: Compra de casa" required>
+
+                <label for="monto-meta-futura">Monto Requerido:</label>
+                <input type="number" id="monto-meta-futura" name="monto-meta-futura" required>
+
+                <label for="plazo-futuro">Plazo (años):</label>
+                <input type="number" id="plazo-futuro" name="plazo-futuro" required>
+
+                <button type="submit">Calcular Ahorro Mensual</button>
+            </form>
+            <div id="resultado-planificacion">
+                <h3>Resultado</h3>
+                <p id="ahorro-mensual"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Finanzas Futuristas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="javascripts/scripts.js"></script>
+</body>
+</html>

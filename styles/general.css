@@ -1,0 +1,131 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0a0a0a;
+    color: #00ffcc;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    background: linear-gradient(135deg, #003366, #000033);
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 2px solid #00ffcc;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: #00ffcc;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #00cc99;
+}
+
+/* Secciones */
+section {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
+}
+
+h2 {
+    font-size: 2rem;
+    color: #00ffcc;
+    margin-bottom: 10px;
+}
+
+/* Formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-size: 1.1rem;
+    color: #00cc99;
+}
+
+input, select, button {
+    padding: 10px;
+    border: 1px solid #00ffcc;
+    border-radius: 5px;
+    background-color: #262626;
+    color: #00ffcc;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #003366;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #004488;
+}
+
+/* Lista de gastos */
+#lista-gastos ul {
+    list-style: none;
+    padding: 0;
+}
+
+#lista-gastos li {
+    background-color: #262626;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    color: #00ffcc;
+}
+
+/* Progreso de ahorro */
+progress {
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #262626;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #262626;
+    border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+    background-color: #00ffcc;
+    border-radius: 10px;
+}
+
+/* Consejos */
+#consejo {
+    font-style: italic;
+    color: #00cc99;
+}
+
+/* Gráficos */
+#graficos-container {
+    margin-top: 20px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #003366;
+    color: #00cc99;
+    margin-top: 20px;
+}
